@@ -229,7 +229,7 @@ module RackStatsD
         end
 
         @stats.increment "#{@stats_prefix}.status_code.#{status}"
-        @stats.increment "#{@stats_prefix}.status_class.#{status / 100}xx"
+        @stats.increment "#{@stats_prefix}.status_class.#{status.to_i / 100}xx"
 
         if @track_gc && GC.time > 0
           @stats.timing "#{@stats_prefix}.gc.time", GC.time / 1000
